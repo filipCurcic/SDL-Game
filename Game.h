@@ -5,6 +5,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include "GameObject.h"
+
 using namespace std;
 
 class Game
@@ -22,6 +24,7 @@ class Game
         bool running() {return isRunning;}
 
         static SDL_Renderer *renderer;
+        static SDL_Event event;
 
     private:
         bool isRunning;

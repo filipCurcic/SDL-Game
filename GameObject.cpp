@@ -13,8 +13,7 @@ GameObject::GameObject(const char* texturesheet, int x, int y)
 void GameObject::update()
 {
 
-    xpos++;
-    ypos++;
+
 
     srcRect.h = 32;
     srcRect.w = 32;
@@ -30,4 +29,10 @@ void GameObject::update()
 void GameObject::render()
 {
     SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destinationRect);
+}
+
+void GameObject::move(int dx, int dy)
+{
+    xpos += dx;
+    ypos += dy;
 }

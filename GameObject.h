@@ -11,6 +11,7 @@ public:
 
     void update();
     void render();
+    void move(int dx, int dy);
 
 
 private:
