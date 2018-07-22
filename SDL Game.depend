@@ -1,17 +1,18 @@
 # depslib dependency file v1.0
-1532038056 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
+1532047417 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
 	<iostream>
 	"Game.h"
 
-1532042920 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
+1532098890 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
 	"Game.h"
 	"TextureManager.h"
 	"GameObject.h"
 	"Map.h"
-	"Unit.h"
+	"Player.h"
 	<vector>
+	<utility>
 
-1532042779 c:\users\filip\documents\c++ projects\sdl game\game.h
+1532047394 c:\users\filip\documents\c++ projects\sdl game\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
@@ -722,9 +723,9 @@
 	"Unit.h"
 	"GameObject.h"
 
-1532040431 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
+1532098960 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
 	"Player.h"
 
-1532039960 c:\users\filip\documents\c++ projects\sdl game\player.h
-	"Unit.h"
+1532098678 c:\users\filip\documents\c++ projects\sdl game\player.h
+	"GameObject.h"
 

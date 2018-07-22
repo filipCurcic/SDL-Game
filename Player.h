@@ -1,12 +1,13 @@
 #ifndef PLAYER_H_INCLUDED
 #define PLAYER_H_INCLUDED
-#include "Unit.h"
+#include "GameObject.h"
 
-class Player : public Unit {
+class Player : public GameObject {
 public:
     Player();
 
     void shoot();
+    void control(Player *player);
 
     ~Player();
 

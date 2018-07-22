@@ -2,16 +2,18 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Map.h"
-#include "Unit.h"
+#include "Player.h"
 #include <vector>
 #include <utility>
 
-GameObject* player;
-Unit* u1;
+
+
 Map* map;
+Player* player;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
+
 vector<GameObject*> objects;
 
 
@@ -21,7 +23,12 @@ Game::Game()
 }
 
 Game::~Game()
-{}
+{SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
+    SDL_Quit();
+}
+
+
 void Game::init(const char *title, int width, int height, bool fullscreen)
 {
     int flags = 0;
@@ -41,31 +48,8 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
         isRunning = true;
     }else {isRunning = false;}
 
-    player = new GameObject("assets/h1.png", 0, 0);
-    u1 = new Unit();
+    player = new Player();
     map = new Map();
-
-}
-
-
-
-
-
-void Game::update()
-{
-    player->update();
-    u1->update();
-    u1->move(0,1);
-
-}
-
-void Game::render()
-{
-    SDL_RenderClear(renderer);
-    map->DrawMap();
-    player->render();
-    u1->render();
-    SDL_RenderPresent(renderer);
 
 }
 
@@ -77,32 +61,42 @@ void Game::handleEvents()
         case SDL_QUIT:
             isRunning = false;
             break;
-
-        case SDL_KEYDOWN:
-            switch(event.key.keysym.sym) {
-            case SDLK_w:
-                player->move(0,1);
-                break;
-            }
-            break;
         case SDL_MOUSEBUTTONDOWN:
-            Unit *a = new Unit();
+            static Player *a = new Player();
             objects.push_back(a);
+            break;
     }
     for(vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); it++) {
             (*it)->update();
             (*it)->render();
-        }
+    }
+
+
+
 
 }
 
 
-void Game::clean()
+
+void Game::update()
 {
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
-    SDL_Quit();
-    cout << "Cleaned" << endl;
+    player->update();
+    player->control(player);
+
+
 }
+
+void Game::render()
+{
+    SDL_RenderClear(renderer);
+    map->DrawMap();
+    player->render();
+    SDL_RenderPresent(renderer);
+
+}
+
+
+
+
 
 
