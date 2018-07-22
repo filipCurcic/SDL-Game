@@ -3,16 +3,17 @@
 #include "GameObject.h"
 #include "Map.h"
 #include "Player.h"
+
 #include <vector>
 #include <utility>
 #include <windows.h>
-#include "cmath"
 
 
 
 Map* map;
 Player* player;
 GameObject* b;
+Enemy* e;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -65,8 +66,8 @@ void Game::handleEvents()
             isRunning = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            b = new GameObject("assets/e1.png", event.button.x, event.button.y);
-            objects.push_back(b);
+            e = new Enemy();
+            objects.push_back(e);
 
             break;
     }
@@ -79,13 +80,7 @@ void Game::update()
 {
     player->update();
     player->control(player);
-    /*if(Game::checkCollision(player, b)){
-        cout<< "radi" << endl;
-    }*/
-
-
-
-
+    cout << player->getXCentre() << endl;
 }
 
 void Game::render()
@@ -119,16 +114,5 @@ return x;
 }
 
 
-/*bool Game::checkCollision(Player *a, Enemy *b)
-{
-    int xDist = (b->getXCentre() - a->getXCentre()) * (b->getXCentre() - a->getXCentre());
-    int yDist = (b->getYCentre() - a->getYCentre()) * (b->getYCentre() - a->getYCentre());
-    double dist = sqrt(xDist+yDist);
-    if(dist<=a->getRadius()+b->getRadius()){
-        return true;
-    }
-    return false;
-}
 
-*/
 

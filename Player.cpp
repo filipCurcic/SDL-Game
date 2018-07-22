@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "cmath"
 
 
 Player::Player() : GameObject("assets/h1.png", 32, 32)
@@ -25,3 +26,14 @@ void Player::control(Player *player) {
     }
 
 }
+
+void Player::checkCollision(Player *a,Enemy *b)
+{
+    int xDist = (b->getXCentre() - a->getXCentre()) * (b->getXCentre() - a->getXCentre());
+    int yDist = (b->getYCentre() - a->getYCentre()) * (b->getYCentre() - a->getYCentre());
+    double dist = sqrt(xDist+yDist);
+    if(dist <= a->getRadius() + b->getRadius()){
+        cout << "test" << endl;;
+    }
+}
+

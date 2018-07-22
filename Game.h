@@ -7,6 +7,7 @@
 #include <iostream>
 #include "GameObject.h"
 
+
 using namespace std;
 
 class Game
@@ -26,7 +27,7 @@ class Game
         static SDL_Renderer *renderer;
         static SDL_Event event;
         int randNum();
-        //bool checkCollision(Player *a, Enemy *b);
+
 
 
 

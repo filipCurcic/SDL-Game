@@ -21,8 +21,8 @@ public:
 
 private:
     int xpos, ypos;
-    int xCentre = xpos+destinationRect.w;
-    int yCentre = ypos-destinationRect.h;
+    int xCentre = xpos+(destinationRect.w/2);
+    int yCentre = ypos-(destinationRect.h/2);
     int radius = destinationRect.w/2;
 
     SDL_Texture* objTexture;
