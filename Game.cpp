@@ -5,11 +5,14 @@
 #include "Player.h"
 #include <vector>
 #include <utility>
+#include <windows.h>
+#include "cmath"
 
 
 
 Map* map;
 Player* player;
+GameObject* b;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
@@ -62,19 +65,13 @@ void Game::handleEvents()
             isRunning = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            static Player *a = new Player();
-            objects.push_back(a);
+            b = new GameObject("assets/e1.png", event.button.x, event.button.y);
+            objects.push_back(b);
+
             break;
     }
-    for(vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); it++) {
-            (*it)->update();
-            (*it)->render();
-    }
-
-
-
-
 }
+
 
 
 
@@ -82,6 +79,11 @@ void Game::update()
 {
     player->update();
     player->control(player);
+    /*if(Game::checkCollision(player, b)){
+        cout<< "radi" << endl;
+    }*/
+
+
 
 
 }
@@ -91,12 +93,42 @@ void Game::render()
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->render();
+    Game::spawnUnits();
     SDL_RenderPresent(renderer);
+
+
+}
+
+void Game::spawnUnits()
+{
+    for(vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); it++) {
+            (*it)->update();
+            (*it)->render();
+            //(*it)->move(0,2);
+    }
 
 }
 
 
+Game::randNum()
+//the parameters must be min = 3, max = 3;
+{
+int x = rand()%(798-1 + 1) + 1;
+return x;
+
+}
 
 
+/*bool Game::checkCollision(Player *a, Enemy *b)
+{
+    int xDist = (b->getXCentre() - a->getXCentre()) * (b->getXCentre() - a->getXCentre());
+    int yDist = (b->getYCentre() - a->getYCentre()) * (b->getYCentre() - a->getYCentre());
+    double dist = sqrt(xDist+yDist);
+    if(dist<=a->getRadius()+b->getRadius()){
+        return true;
+    }
+    return false;
+}
 
+*/
 

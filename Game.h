@@ -20,16 +20,22 @@ class Game
         void handleEvents();
         void update();
         void render();
+        void spawnUnits();
         bool running() {return isRunning;}
 
         static SDL_Renderer *renderer;
         static SDL_Event event;
+        int randNum();
+        //bool checkCollision(Player *a, Enemy *b);
+
 
 
     private:
         bool isRunning;
+        bool spawning;
         SDL_Window *window;
         int counter = 0;
+
 };
 
 #endif // GAME_H

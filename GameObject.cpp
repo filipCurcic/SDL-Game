@@ -36,3 +36,13 @@ void GameObject::move(int dx, int dy)
     xpos += dx;
     ypos += dy;
 }
+
+
+
+
+
+
+
+
+
+

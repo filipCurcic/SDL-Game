@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1532047417 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
+1532275643 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
 	<iostream>
 	"Game.h"
 
-1532098890 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
+1532286604 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
 	"Game.h"
 	"TextureManager.h"
 	"GameObject.h"
@@ -11,8 +11,10 @@
 	"Player.h"
 	<vector>
 	<utility>
+	<windows.h>
+	"cmath"
 
-1532047394 c:\users\filip\documents\c++ projects\sdl game\game.h
+1532289467 c:\users\filip\documents\c++ projects\sdl game\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
@@ -702,17 +704,18 @@
 1531836959 c:\users\filip\documents\c++ projects\sdl game\texturemanager.h
 	"Game.h"
 
-1532037982 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
+1532285427 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
 	"Game.h"
 
-1532041579 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
+1532284591 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
 	"GameObject.h"
 	"TextureManager.h"
+	"cmath"
 
 1531836722 c:\users\filip\documents\c++ projects\sdl game\map.h
 	"Game.h"
 
-1531837639 source:c:\users\filip\documents\c++ projects\sdl game\map.cpp
+1532277228 source:c:\users\filip\documents\c++ projects\sdl game\map.cpp
 	"Map.h"
 	"TextureManager.h"
 
@@ -723,9 +726,12 @@
 	"Unit.h"
 	"GameObject.h"
 
-1532098960 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
+1532277291 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
 	"Player.h"
 
-1532098678 c:\users\filip\documents\c++ projects\sdl game\player.h
+1532287121 c:\users\filip\documents\c++ projects\sdl game\player.h
+	"GameObject.h"
+
+1532285956 c:\users\filip\documents\c++ projects\sdl game\enemy.h
 	"GameObject.h"
 
