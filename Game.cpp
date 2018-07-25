@@ -14,7 +14,7 @@ Map* map;
 Player* player;
 GameObject* b;
 Enemy* e;
-
+Enemy* protivnik;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
@@ -53,6 +53,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
     }else {isRunning = false;}
 
     player = new Player();
+    protivnik = new Enemy();
     map = new Map();
 
 }
@@ -68,6 +69,8 @@ void Game::handleEvents()
         case SDL_MOUSEBUTTONDOWN:
             e = new Enemy();
             objects.push_back(e);
+            player->shoot(200, 200);
+
 
             break;
     }
@@ -79,8 +82,11 @@ void Game::handleEvents()
 void Game::update()
 {
     player->update();
+    protivnik->update();
     player->control(player);
-    cout << player->getXCentre() << endl;
+    //cout << player->getXCentre() << "," << player->getYCentre() << endl;
+    player->checkCollision(player, protivnik);
+
 }
 
 void Game::render()
@@ -88,6 +94,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->render();
+    protivnik->render();
     Game::spawnUnits();
     SDL_RenderPresent(renderer);
 

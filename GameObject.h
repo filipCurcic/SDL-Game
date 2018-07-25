@@ -12,9 +12,13 @@ public:
     void update();
     void render();
     void move(int dx, int dy);
-    int getXCentre() {return xCentre;}
-    int getYCentre() {return yCentre;}
-    int getRadius() {return radius;}
+    int getXCentre() {return destinationRect.x+32;}
+    int getYCentre() {return destinationRect.y+32;}
+    int getRadius() {return 32;}
+    int getX() {return destinationRect.x;}
+    int getY() {return destinationRect.y;}
+    void setX(int x) {destinationRect.x = x;}
+    void setY(int y) {destinationRect.y = y;}
 
 
 
@@ -24,9 +28,10 @@ private:
     int xCentre = xpos+(destinationRect.w/2);
     int yCentre = ypos-(destinationRect.h/2);
     int radius = destinationRect.w/2;
+    int testx = destinationRect.x;
 
     SDL_Texture* objTexture;
-    SDL_Rect srcRect, destinationRect;
+    SDL_Rect destinationRect;
 
 
 

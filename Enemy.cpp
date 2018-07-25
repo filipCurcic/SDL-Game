@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy() : GameObject("assets/e1.png", 32, 32)
+Enemy::Enemy() : GameObject("assets/e1.png", 264, 264)
 {
 
 };

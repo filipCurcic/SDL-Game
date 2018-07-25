@@ -14,21 +14,15 @@ void GameObject::update()
 {
 
 
-
-    srcRect.h = 32;
-    srcRect.w = 32;
-    srcRect.x = 0;
-    srcRect.y = 0;
-
     destinationRect.x = xpos;
     destinationRect.y = ypos;
-    destinationRect.w = srcRect.w * 2;
-    destinationRect.h = srcRect.h * 2;
+    destinationRect.w = 64;
+    destinationRect.h = 64;
 }
 
 void GameObject::render()
 {
-    SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destinationRect);
+    SDL_RenderCopy(Game::renderer, objTexture, NULL, &destinationRect);
 }
 
 void GameObject::move(int dx, int dy)

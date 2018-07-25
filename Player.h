@@ -7,7 +7,7 @@ class Player : public GameObject {
 public:
     Player();
 
-    void shoot();
+    void shoot(int x, int y);
     void control(Player *player);
     void checkCollision(Player *a, Enemy *b);
 

@@ -3,7 +3,7 @@
 	<iostream>
 	"Game.h"
 
-1532291419 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
+1532560597 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
 	"Game.h"
 	"TextureManager.h"
 	"GameObject.h"
@@ -703,10 +703,10 @@
 1531836959 c:\users\filip\documents\c++ projects\sdl game\texturemanager.h
 	"Game.h"
 
-1532291311 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
+1532560557 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
 	"Game.h"
 
-1532285275 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
+1532556957 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
 	"GameObject.h"
 	"TextureManager.h"
 
@@ -724,17 +724,17 @@
 	"Unit.h"
 	"GameObject.h"
 
-1532291399 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
+1532560569 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
 	"Player.h"
 	"cmath"
 
-1532291025 c:\users\filip\documents\c++ projects\sdl game\player.h
+1532560228 c:\users\filip\documents\c++ projects\sdl game\player.h
 	"GameObject.h"
 	"Enemy.h"
 
 1532289788 c:\users\filip\documents\c++ projects\sdl game\enemy.h
 	"GameObject.h"
 
-1532290647 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
+1532560065 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
 	"Enemy.h"
 

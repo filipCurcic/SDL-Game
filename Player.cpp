@@ -2,7 +2,7 @@
 #include "cmath"
 
 
-Player::Player() : GameObject("assets/h1.png", 32, 32)
+Player::Player() : GameObject("assets/h1.png", 64, 64)
 {
 
 };
@@ -31,9 +31,30 @@ void Player::checkCollision(Player *a,Enemy *b)
 {
     int xDist = (b->getXCentre() - a->getXCentre()) * (b->getXCentre() - a->getXCentre());
     int yDist = (b->getYCentre() - a->getYCentre()) * (b->getYCentre() - a->getYCentre());
+
     double dist = sqrt(xDist+yDist);
-    if(dist <= a->getRadius() + b->getRadius()){
-        cout << "test" << endl;;
+    int rad = a->getRadius() + b->getRadius();
+    if(dist <= rad/2-2){
+        cout << "Kolizija" << endl;
+
+
     }
+    else {
+        cout << "Nema" << endl;
+    }
+
+}
+
+
+void Player::shoot(int x, int y)
+{
+    GameObject* p = new GameObject("assets.e1.png", x, y);
+    for(int i = 32; i<x; i++){
+        p->update();
+        p->render();
+        p->setX(i);
+        cout << "aa" << endl;
+    }
+
 }
 
