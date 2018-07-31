@@ -5,7 +5,7 @@
 
 class Player : public GameObject {
 public:
-    Player();
+    Player(int x, int y);
 
     void shoot(int x, int y);
     void control(Player *player);

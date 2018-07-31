@@ -2,9 +2,10 @@
 #include "cmath"
 
 
-Player::Player() : GameObject("assets/h1.png", 64, 64)
+Player::Player(int x, int y) : GameObject("assets/h1.png")
 {
-
+    destinationRect.x = x;
+    destinationRect.y = y;
 };
 void Player::control(Player *player) {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
@@ -36,6 +37,7 @@ void Player::checkCollision(Player *a,Enemy *b)
     int rad = a->getRadius() + b->getRadius();
     if(dist <= rad/2-2){
         cout << "Kolizija" << endl;
+        b->die();
 
 
     }
@@ -45,7 +47,7 @@ void Player::checkCollision(Player *a,Enemy *b)
 
 }
 
-
+/*
 void Player::shoot(int x, int y)
 {
     GameObject* p = new GameObject("assets.e1.png", x, y);
@@ -57,4 +59,4 @@ void Player::shoot(int x, int y)
     }
 
 }
-
+*/

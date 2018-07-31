@@ -6,7 +6,7 @@
 class GameObject {
 
 public:
-    GameObject(const char* texturesheet, int x, int y);
+    GameObject(const char* texturesheet);
     ~GameObject();
 
     void update();
@@ -19,19 +19,18 @@ public:
     int getY() {return destinationRect.y;}
     void setX(int x) {destinationRect.x = x;}
     void setY(int y) {destinationRect.y = y;}
-
+    SDL_Rect destinationRect;
 
 
 
 private:
     int xpos, ypos;
-    int xCentre = xpos+(destinationRect.w/2);
-    int yCentre = ypos-(destinationRect.h/2);
+    int xCentre = destinationRect.x+(destinationRect.w/2);
+    int yCentre = destinationRect.y-(destinationRect.h/2);
     int radius = destinationRect.w/2;
     int testx = destinationRect.x;
-
     SDL_Texture* objTexture;
-    SDL_Rect destinationRect;
+
 
 
 

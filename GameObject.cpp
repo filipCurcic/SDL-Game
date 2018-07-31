@@ -2,20 +2,17 @@
 #include "TextureManager.h"
 
 
-GameObject::GameObject(const char* texturesheet, int x, int y)
+GameObject::GameObject(const char* texturesheet)
 {
     objTexture = TextureManager::LoadTexture(texturesheet);
+    destinationRect.x = 0;
+    destinationRect.y = 0;
 
-    xpos = x;
-    ypos = y;
+
 }
 
 void GameObject::update()
 {
-
-
-    destinationRect.x = xpos;
-    destinationRect.y = ypos;
     destinationRect.w = 64;
     destinationRect.h = 64;
 }
@@ -27,8 +24,8 @@ void GameObject::render()
 
 void GameObject::move(int dx, int dy)
 {
-    xpos += dx;
-    ypos += dy;
+    destinationRect.x += dx;
+    destinationRect.y += dy;
 }
 
 

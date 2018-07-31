@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1532275643 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
+1532907467 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
 	<iostream>
 	"Game.h"
 
-1532560597 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
+1533061866 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
 	"Game.h"
 	"TextureManager.h"
 	"GameObject.h"
@@ -13,7 +13,7 @@
 	<utility>
 	<windows.h>
 
-1532290045 c:\users\filip\documents\c++ projects\sdl game\game.h
+1532907401 c:\users\filip\documents\c++ projects\sdl game\game.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<iostream>
@@ -700,13 +700,13 @@
 1531836999 source:c:\users\filip\documents\c++ projects\sdl game\texturemanager.cpp
 	"TextureManager.h"
 
-1531836959 c:\users\filip\documents\c++ projects\sdl game\texturemanager.h
+1532709612 c:\users\filip\documents\c++ projects\sdl game\texturemanager.h
 	"Game.h"
 
-1532560557 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
+1532904049 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
 	"Game.h"
 
-1532556957 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
+1532904049 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
 	"GameObject.h"
 	"TextureManager.h"
 
@@ -724,17 +724,18 @@
 	"Unit.h"
 	"GameObject.h"
 
-1532560569 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
+1532904346 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
 	"Player.h"
 	"cmath"
 
-1532560228 c:\users\filip\documents\c++ projects\sdl game\player.h
+1532904049 c:\users\filip\documents\c++ projects\sdl game\player.h
 	"GameObject.h"
 	"Enemy.h"
 
-1532289788 c:\users\filip\documents\c++ projects\sdl game\enemy.h
+1533063218 c:\users\filip\documents\c++ projects\sdl game\enemy.h
 	"GameObject.h"
 
-1532560065 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
+1533063273 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
 	"Enemy.h"
+	<windows.h>
 

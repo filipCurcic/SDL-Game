@@ -18,7 +18,7 @@ Enemy* protivnik;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
-vector<GameObject*> objects;
+vector<Enemy*> objects;
 
 
 Game::Game()
@@ -52,11 +52,13 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
         isRunning = true;
     }else {isRunning = false;}
 
-    player = new Player();
-    protivnik = new Enemy();
+    player = new Player(356,256);
+   // protivnik = new Enemy();
     map = new Map();
+    e = new Enemy(0, 0);
 
 }
+
 
 void Game::handleEvents()
 {
@@ -67,11 +69,8 @@ void Game::handleEvents()
             isRunning = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            e = new Enemy();
+            e = new Enemy(event.button.x, event.button.y);
             objects.push_back(e);
-            player->shoot(200, 200);
-
-
             break;
     }
 }
@@ -81,11 +80,11 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    player->update();
-    protivnik->update();
-    player->control(player);
-    //cout << player->getXCentre() << "," << player->getYCentre() << endl;
-    player->checkCollision(player, protivnik);
+     player->update();
+   // protivnik->update();
+     player->control(player);
+    player->checkCollision(player, e);
+
 
 }
 
@@ -94,7 +93,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->render();
-    protivnik->render();
+   // protivnik->render();
     Game::spawnUnits();
     SDL_RenderPresent(renderer);
 
@@ -103,10 +102,12 @@ void Game::render()
 
 void Game::spawnUnits()
 {
-    for(vector<GameObject*>::iterator it = objects.begin(); it != objects.end(); it++) {
-            (*it)->update();
+    for(vector<Enemy*>::iterator it = objects.begin(); it != objects.end(); it++) {
+
             (*it)->render();
-            //(*it)->move(0,2);
+            (*it)->update();
+            (*it)->move();
+
     }
 
 }
@@ -120,6 +121,12 @@ return x;
 
 }
 
-
+void Game::spawnEnemies()
+{
+    for (int i = 0; i<20; i++) {
+        e = new Enemy(randNum(), randNum());
+        objects.push_back(e);
+    }
+}
 
 
