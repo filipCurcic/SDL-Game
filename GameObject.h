@@ -7,7 +7,7 @@ class GameObject {
 
 public:
     GameObject(const char* texturesheet);
-    ~GameObject();
+    ~GameObject(){};
 
     void update();
     void render();

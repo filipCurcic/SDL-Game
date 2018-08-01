@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     game = new Game();
     game->init("Title", 800, 640, false);
-    for (int i = 0; i<5;i++){
+    for (int i = 0; i<2;i++){
             game->spawnEnemies();
         }
 

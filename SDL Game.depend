@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1532907467 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
+1533135990 source:c:\users\filip\documents\c++ projects\sdl game\main.cpp
 	<iostream>
 	"Game.h"
 
-1533089940 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
+1533135857 source:c:\users\filip\documents\c++ projects\sdl game\game.cpp
 	"Game.h"
 	"TextureManager.h"
 	"GameObject.h"
@@ -703,7 +703,7 @@
 1532709612 c:\users\filip\documents\c++ projects\sdl game\texturemanager.h
 	"Game.h"
 
-1532904049 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
+1533135073 c:\users\filip\documents\c++ projects\sdl game\gameobject.h
 	"Game.h"
 
 1532904049 source:c:\users\filip\documents\c++ projects\sdl game\gameobject.cpp
@@ -724,7 +724,7 @@
 	"Unit.h"
 	"GameObject.h"
 
-1533089894 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
+1533090309 source:c:\users\filip\documents\c++ projects\sdl game\player.cpp
 	"Player.h"
 	"cmath"
 	"Bullet.h"
@@ -735,12 +735,16 @@
 	"Bullet.h"
 	<vector>
 
-1533063218 c:\users\filip\documents\c++ projects\sdl game\enemy.h
+1533135823 c:\users\filip\documents\c++ projects\sdl game\enemy.h
 	"GameObject.h"
+	"Bullet.h"
+	<vector>
 
-1533063273 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
+1533135963 source:c:\users\filip\documents\c++ projects\sdl game\enemy.cpp
 	"Enemy.h"
 	<windows.h>
+	"cmath"
+	<vector>
 
 1533089664 source:c:\users\filip\documents\c++ projects\sdl game\bullet.cpp
 	"Bullet.h"

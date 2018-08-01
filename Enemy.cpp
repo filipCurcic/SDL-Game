@@ -1,5 +1,7 @@
 #include "Enemy.h"
 #include <windows.h>
+#include "cmath"
+#include <vector>
 
 Enemy::Enemy(int x, int y) : GameObject("assets/e1.png")
 {
@@ -8,10 +10,6 @@ Enemy::Enemy(int x, int y) : GameObject("assets/e1.png")
     currentState = stop;
 };
 
-void Enemy::die()
-{
-
-}
 
 void Enemy::updateEnemy()
 {
@@ -95,3 +93,16 @@ void Enemy::changeState()
     }
 
 }
+
+
+void Enemy::bulletCollision(Enemy *enemy, Bullet *bullet, vector<Enemy*> enemies)
+{
+    int xDist = (bullet->getXCentre() - enemy->getXCentre()) * (bullet->getXCentre() - enemy->getXCentre());
+    int yDist = (bullet->getYCentre() - enemy->getYCentre()) * (bullet->getYCentre() - enemy->getYCentre());
+    double dist = sqrt(xDist+yDist);
+    int rad = enemy->getRadius() + bullet->getRadius();
+    if(dist <= rad/2-2){
+        cout << "Col" << endl;
+    }
+}
+
