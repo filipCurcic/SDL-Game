@@ -1,16 +1,16 @@
 #ifndef BULLET_H
 #define BULLET_H
+#include "GameObject.h"
 
-
-class Bullet
+class Bullet : public GameObject
 {
     public:
-        Bullet();
-        virtual ~Bullet();
-
-    protected:
+        Bullet(int x, int y);
+        ~Bullet();
 
     private:
+        int startingX,startingY;
+
 };
 
 #endif // BULLET_H

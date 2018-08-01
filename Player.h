@@ -2,12 +2,13 @@
 #define PLAYER_H_INCLUDED
 #include "GameObject.h"
 #include "Enemy.h"
+#include "Bullet.h"
+#include <vector>
+
 
 class Player : public GameObject {
 public:
     Player(int x, int y);
-
-    void shoot(int x, int y);
     void control(Player *player);
     void checkCollision(Player *a, Enemy *b);
 

@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "cmath"
-
+#include "Bullet.h"
 
 Player::Player(int x, int y) : GameObject("assets/h1.png")
 {
@@ -37,26 +37,5 @@ void Player::checkCollision(Player *a,Enemy *b)
     int rad = a->getRadius() + b->getRadius();
     if(dist <= rad/2-2){
         cout << "Kolizija" << endl;
-        b->die();
-
-
     }
-    else {
-        cout << "Nema" << endl;
-    }
-
 }
-
-/*
-void Player::shoot(int x, int y)
-{
-    GameObject* p = new GameObject("assets.e1.png", x, y);
-    for(int i = 32; i<x; i++){
-        p->update();
-        p->render();
-        p->setX(i);
-        cout << "aa" << endl;
-    }
-
-}
-*/

@@ -28,6 +28,7 @@ class Game
         static SDL_Event event;
         int randNum();
         void spawnEnemies();
+        void spawnBullets();
 
 
 

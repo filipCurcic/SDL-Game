@@ -1,11 +1,9 @@
 #include "Bullet.h"
 
-Bullet::Bullet()
+Bullet::Bullet(int x, int y) : GameObject("assets/bullet.png")
 {
-    //ctor
-}
+    destinationRect.x = x;
+    destinationRect.y = y;
+};
 
-Bullet::~Bullet()
-{
-    //dtor
-}
+

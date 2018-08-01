@@ -15,10 +15,15 @@ Player* player;
 GameObject* b;
 Enemy* e;
 Enemy* protivnik;
+Bullet* bullet;
+
+
+
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 vector<Enemy*> objects;
+vector<Bullet*> bullets;
 
 
 Game::Game()
@@ -53,6 +58,7 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
     }else {isRunning = false;}
 
     player = new Player(356,256);
+
    // protivnik = new Enemy();
     map = new Map();
     e = new Enemy(0, 0);
@@ -69,9 +75,13 @@ void Game::handleEvents()
             isRunning = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            e = new Enemy(event.button.x, event.button.y);
+            bullet = new Bullet(player->getX(), player->getY());
+            bullets.push_back(bullet);
+
+            //player->shoot(bullet, bullets, player);
+            /*e = new Enemy(event.button.x, event.button.y);
             objects.push_back(e);
-            break;
+            break;*/
     }
 }
 
@@ -80,12 +90,10 @@ void Game::handleEvents()
 
 void Game::update()
 {
-     player->update();
-   // protivnik->update();
-     player->control(player);
+    player->update();
+    //protivnik->update();
+    player->control(player);
     player->checkCollision(player, e);
-
-
 }
 
 void Game::render()
@@ -94,8 +102,10 @@ void Game::render()
     map->DrawMap();
     player->render();
    // protivnik->render();
-    Game::spawnUnits();
+   // Game::spawnUnits();
+    Game::spawnBullets();
     SDL_RenderPresent(renderer);
+
 
 
 }
@@ -110,6 +120,15 @@ void Game::spawnUnits()
 
     }
 
+}
+
+void Game::spawnBullets()
+{
+    for(vector<Bullet*>::iterator it = bullets.begin(); it != bullets.end(); it++) {
+            (*it)->render();
+            (*it)->update();
+            (*it)->move(10, 0);
+    }
 }
 
 
@@ -128,5 +147,6 @@ void Game::spawnEnemies()
         objects.push_back(e);
     }
 }
+
 
 
