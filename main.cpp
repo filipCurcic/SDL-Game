@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 
     game = new Game();
     game->init("Title", 800, 640, false);
-    for (int i = 0; i<2;i++){
+    game->fillVector();
+    for (int i = 0; i<1;i++){
             game->spawnEnemies();
         }
 

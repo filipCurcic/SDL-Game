@@ -17,6 +17,11 @@ public:
     virtual void move();
     void changeState();
     void bulletCollision(Enemy *enemy, Bullet *bullet,vector<Enemy*> enemies);
+    static Enemy *createEnemy(int x, int y) {return new Enemy(x,y);}
+    bool checkBorders();
+
+
+
 private:
     int xp;
     int yp;

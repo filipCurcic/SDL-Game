@@ -3,7 +3,7 @@
 #include "cmath"
 #include <vector>
 
-Enemy::Enemy(int x, int y) : GameObject("assets/e1.png")
+Enemy::Enemy(int x, int y) : GameObject("assets/e1.png", "enemy")
 {
     destinationRect.x = x;
     destinationRect.y = y;
@@ -21,29 +21,52 @@ void Enemy::move()
 {
     switch(currentState){
     case move_left:
-        GameObject::move(-1, 0);
-        break;
+        while(checkBorders()){
+            GameObject::move(-1, 0);
+            break;
+        }
+
     case move_right:
-        GameObject::move(1, 0);
-        break;
+        while(checkBorders()){
+            GameObject::move(1, 0);
+            break;
+        }
     case move_up:
-        GameObject::move(0, -1);
-        break;
+        while(checkBorders()){
+            GameObject::move(0, -1);
+            break;
+        }
+
     case move_down:
-        GameObject::move(0, 1);
-        break;
+        while(checkBorders()) {
+            GameObject::move(0, 1);
+            break;
+        }
+
     case move_diag_left_up:
-        GameObject::move(-1, -1);
-        break;
+        while(checkBorders()) {
+            GameObject::move(-1, -1);
+            break;
+        }
+
     case move_diag_right_up:
-        GameObject::move(1, 1);
-        break;
+        while(checkBorders()) {
+           GameObject::move(1, 1);
+            break;
+        }
+
     case move_diag_left_down:
-        GameObject::move(-1, 1);
-        break;
+        while(checkBorders()) {
+            GameObject::move(-1, 1);
+            break;
+        }
+
     case move_diag_right_down:
-        GameObject::move(1, -1);
-        break;
+        while(checkBorders()) {
+            GameObject::move(1, -1);
+            break;
+        }
+
     case stop:
         GameObject::move(0,0);
         break;
@@ -102,7 +125,25 @@ void Enemy::bulletCollision(Enemy *enemy, Bullet *bullet, vector<Enemy*> enemies
     double dist = sqrt(xDist+yDist);
     int rad = enemy->getRadius() + bullet->getRadius();
     if(dist <= rad/2-2){
-        cout << "Col" << endl;
+
     }
 }
+
+bool Enemy::checkBorders()
+{
+    if(xp > 800 || yp > 640){
+        return false;
+        cout << "presao" << endl;
+    }
+    else {
+        return true;
+    }
+
+}
+
+
+
+
+
+
 

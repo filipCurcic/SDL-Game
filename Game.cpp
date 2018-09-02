@@ -3,7 +3,8 @@
 #include "GameObject.h"
 #include "Map.h"
 #include "Player.h"
-
+#include "Human.h"
+#include "cmath"
 #include <vector>
 #include <utility>
 #include <windows.h>
@@ -14,9 +15,9 @@ Map* map;
 Player* player;
 GameObject* b;
 Enemy* e;
-Enemy* protivnik;
 Bullet* bullet;
-
+Human* human;
+int bulletDirection;
 
 
 SDL_Renderer* Game::renderer = nullptr;
@@ -24,6 +25,9 @@ SDL_Event Game::event;
 
 vector<Enemy*> objects;
 vector<Bullet*> bullets;
+vector<Player*> players;
+vector<Human*> humans;
+vector<Enemy*> enemies;
 
 
 Game::Game()
@@ -58,11 +62,12 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
     }else {isRunning = false;}
 
     player = new Player(356,256);
+    players.push_back(player);
 
-   // protivnik = new Enemy();
     map = new Map();
     e = new Enemy(0, 0);
     bullet = new Bullet(NULL, NULL);
+    human = new Human(200, 200);
 
 }
 
@@ -76,20 +81,43 @@ void Game::handleEvents()
             isRunning = false;
             break;
         case SDL_MOUSEBUTTONDOWN:
-            bullet = new Bullet(player->getX(), player->getY());
-            bullets.push_back(bullet);
+            delete bullet;
+        case SDL_KEYDOWN:
+                switch( event.key.keysym.sym ){
+                    case SDLK_LEFT:
+                        bullet = new Bullet(player->getX(), player->getY());
+                        bullets.push_back(bullet);
+                        bulletDirection = 1;
+                        break;
+                    case SDLK_RIGHT:
+                        bullet = new Bullet(player->getX(), player->getY());
+                        bullets.push_back(bullet);
+                        bulletDirection = 2;
+                        break;
+                    case SDLK_UP:
+                        bullet = new Bullet(player->getX(), player->getY());
+                        bullets.push_back(bullet);
+                        bulletDirection = 3;
+                        break;
+                    case SDLK_DOWN:
+                        bullet = new Bullet(player->getX(), player->getY());
+                        bullets.push_back(bullet);
+                        bulletDirection = 4;
+                        break;
+                    default:
+                        break;
     }
 }
 
-
+}
 
 
 void Game::update()
 {
     player->update();
-    //protivnik->update();
     player->control(player);
-    player->checkCollision(player, e);
+    //player->checkCollision(player, e, enemies);
+    human->update();
     e->bulletCollision(e, bullet, objects);
 }
 
@@ -98,7 +126,7 @@ void Game::render()
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->render();
-   // protivnik->render();
+    human->render();
     Game::spawnUnits();
     Game::spawnBullets();
     SDL_RenderPresent(renderer);
@@ -109,23 +137,62 @@ void Game::render()
 
 void Game::spawnUnits()
 {
-    for(vector<Enemy*>::iterator it = objects.begin(); it != objects.end(); it++) {
-            (*it)->render();
-            (*it)->update();
-            (*it)->move();
-            for(vector<Bullet*>::iterator it2 = bullets.begin(); it2 != bullets.end(); it2++) {
-                (*it)->bulletCollision(*it,*it2, objects);
-            }
+
+    for(vector<Player*>::iterator it3 = players.begin(); it3 != players.end(); it3++) {
+               for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); it++) {
+                    (*it)->render();
+                    (*it)->update();
+                    (*it)->move();
+                    int xDist = ((*it)->getXCentre() - (*it3)->getXCentre()) * ((*it)->getXCentre() - (*it3)->getXCentre());
+                    int yDist = ((*it)->getYCentre() - (*it3)->getYCentre()) * ((*it)->getYCentre() - (*it3)->getYCentre());
+                    double dist = sqrt(xDist+yDist);
+                    int rad = (*it3)->getRadius() + (*it)->getRadius();
+                    if(dist <= rad/2-2){
+                        delete *it;
+                        it = enemies.erase(it);
+                    }
+
+                    //enemies.erase(enemies.begin() + (*it3)->colCheck(players, enemies));
+
+                    for(vector<Bullet*>::iterator it2 = bullets.begin(); it2 != bullets.end(); it2++) {
+                        (*it)->bulletCollision(*it,*it2, enemies);
+                    }
+                }
+
+
     }
 
-}
 
+
+
+
+    for(vector<Human*>::iterator it4 = humans.begin(); it4 != humans.end(); it4++) {
+        (*it4)->render();
+        (*it4)->update();
+
+
+}
+}
 void Game::spawnBullets()
 {
     for(vector<Bullet*>::iterator it = bullets.begin(); it != bullets.end(); it++) {
             (*it)->render();
             (*it)->update();
-            (*it)->move(10, 0);
+            switch(bulletDirection){
+            case 1:
+                (*it)->move(-20, 0);
+                break;
+            case 2:
+                (*it)->move(20, 0);
+                break;
+            case 3:
+                (*it)->move(0, -20);
+                break;
+            case 4:
+                (*it)->move(0, 20);
+                break;
+            }
+
     }
 }
 
@@ -138,13 +205,42 @@ return x;
 
 }
 
-void Game::spawnEnemies()
+void Game::fillVector()
 {
-    for (int i = 0; i<20; i++) {
-        e = new Enemy(randNum(), randNum());
-        objects.push_back(e);
-    }
+    Enemy* e1 = new Enemy(randNum(), randNum());
+    enemies.push_back(e1);
+    Enemy* e2 = new Enemy(randNum(), randNum());
+    enemies.push_back(e2);
+    Enemy* e3 = new Enemy(randNum(), randNum());
+    enemies.push_back(e3);
+    Enemy* e4 = new Enemy(randNum(), randNum());
+    enemies.push_back(e4);
+    Enemy* e5 = new Enemy(randNum(), randNum());
+    enemies.push_back(e5);
+    Enemy* e6 = new Enemy(randNum(), randNum());
+    enemies.push_back(e6);
+    Enemy* e7 = new Enemy(randNum(), randNum());
+    enemies.push_back(e7);
+    Enemy* e8 = new Enemy(randNum(), randNum());
+    enemies.push_back(e8);
+    Enemy* e9 = new Enemy(randNum(), randNum());
+    enemies.push_back(e9);
+    Enemy* e10 = new Enemy(randNum(), randNum());
+    enemies.push_back(e10);
 }
 
 
+
+void Game::spawnEnemies()
+{
+
+
+
+    /*for (int i = 0; i<20; i++) {
+        e = new Enemy(randNum(), randNum());
+        objects.push_back(e);
+        human = new Human(randNum(), randNum());
+        humans.push_back(human);
+    }*/
+}
 

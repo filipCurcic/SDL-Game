@@ -29,6 +29,7 @@ class Game
         int randNum();
         void spawnEnemies();
         void spawnBullets();
+        void fillVector();
 
 
 

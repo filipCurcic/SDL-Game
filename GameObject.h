@@ -6,8 +6,8 @@
 class GameObject {
 
 public:
-    GameObject(const char* texturesheet);
-    ~GameObject(){};
+    GameObject(const char* texturesheet, std::string type);
+    ~GameObject();
 
     void update();
     void render();
@@ -20,11 +20,13 @@ public:
     void setX(int x) {destinationRect.x = x;}
     void setY(int y) {destinationRect.y = y;}
     SDL_Rect destinationRect;
+    std::string getType() {return type;}
 
 
 
 private:
     int xpos, ypos;
+    std::string type;
     int xCentre = destinationRect.x+(destinationRect.w/2);
     int yCentre = destinationRect.y-(destinationRect.h/2);
     int radius = destinationRect.w/2;

@@ -6,10 +6,13 @@ class Bullet : public GameObject
 {
     public:
         Bullet(int x, int y);
-        ~Bullet();
+        int getNewYpos(int startingY, int rectX, int startingX, int targetY, int targetX);
 
     private:
         int startingX,startingY;
+        int targetX, targetY;
+
+       // int newYpos = startingY + (destinationRect.x - startingX) * (targetY-startingY)/(targetX-startingX);
 
 };
 
