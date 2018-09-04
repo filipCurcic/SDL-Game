@@ -6,7 +6,7 @@
 class GameObject {
 
 public:
-    GameObject(const char* texturesheet, std::string type);
+    GameObject(char* texturesheet, std::string type);
     ~GameObject();
 
     void update();
@@ -21,6 +21,10 @@ public:
     void setY(int y) {destinationRect.y = y;}
     SDL_Rect destinationRect;
     std::string getType() {return type;}
+    void setType(std::string t);
+    void changeTexture(char* newT);
+
+
 
 
 
@@ -32,6 +36,7 @@ private:
     int radius = destinationRect.w/2;
     int testx = destinationRect.x;
     SDL_Texture* objTexture;
+
 
 
 

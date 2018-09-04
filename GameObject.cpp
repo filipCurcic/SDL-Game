@@ -2,7 +2,7 @@
 #include "TextureManager.h"
 
 
-GameObject::GameObject(const char* texturesheet, string type)
+GameObject::GameObject(char* texturesheet, string type)
 {
     objTexture = TextureManager::LoadTexture(texturesheet);
     destinationRect.x = 0;
@@ -13,6 +13,7 @@ GameObject::GameObject(const char* texturesheet, string type)
 
 void GameObject::update()
 {
+
     destinationRect.w = 64;
     destinationRect.h = 64;
 }
@@ -25,11 +26,11 @@ void GameObject::render()
 void GameObject::move(int dx, int dy)
 {
 
-    if(destinationRect.x > 756) {
+    if(destinationRect.x > 1200) {
         destinationRect.x -= 1;
     }
     else {
-        if (destinationRect.x < 0) {
+        if (destinationRect.x < 16) {
             destinationRect.x += 1;
         }
         else {
@@ -37,20 +38,27 @@ void GameObject::move(int dx, int dy)
         }
     }
 
-    if(destinationRect.y > 594) {
+    if(destinationRect.y > 688) {
         destinationRect.y -= 1;
     }
     else {
-        if(destinationRect.y < 0) {
+        if(destinationRect.y < 16) {
             destinationRect.y += 1;
         }
         else {
             destinationRect.y += dy;
         }
-
     }
+}
 
+void GameObject::setType(std::string t)
+{
+    type = t;
+}
 
+void GameObject::changeTexture(char* newT)
+{
+    objTexture = TextureManager::LoadTexture(newT);
 }
 
 GameObject::~GameObject()

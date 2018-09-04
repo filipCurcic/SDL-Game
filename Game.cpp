@@ -116,8 +116,6 @@ void Game::update()
 {
     player->update();
     player->control(player);
-    //player->checkCollision(player, e, enemies);
-    human->update();
     e->bulletCollision(e, bullet, objects);
 }
 
@@ -126,7 +124,6 @@ void Game::render()
     SDL_RenderClear(renderer);
     map->DrawMap();
     player->render();
-    human->render();
     Game::spawnUnits();
     Game::spawnBullets();
     SDL_RenderPresent(renderer);
@@ -139,37 +136,44 @@ void Game::spawnUnits()
 {
 
     for(vector<Player*>::iterator it3 = players.begin(); it3 != players.end(); it3++) {
-               for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); it++) {
-                    (*it)->render();
-                    (*it)->update();
-                    (*it)->move();
-                    int xDist = ((*it)->getXCentre() - (*it3)->getXCentre()) * ((*it)->getXCentre() - (*it3)->getXCentre());
-                    int yDist = ((*it)->getYCentre() - (*it3)->getYCentre()) * ((*it)->getYCentre() - (*it3)->getYCentre());
-                    double dist = sqrt(xDist+yDist);
-                    int rad = (*it3)->getRadius() + (*it)->getRadius();
-                    if(dist <= rad/2-2){
-                        delete *it;
-                        it = enemies.erase(it);
-                    }
+       for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); it++) {
 
-                    //enemies.erase(enemies.begin() + (*it3)->colCheck(players, enemies));
+                (*it)->render();
+                (*it)->update();
+                (*it)->move();
+                int xDist = ((*it)->getXCentre() - (*it3)->getXCentre()) * ((*it)->getXCentre() - (*it3)->getXCentre());
+                int yDist = ((*it)->getYCentre() - (*it3)->getYCentre()) * ((*it)->getYCentre() - (*it3)->getYCentre());
+                double dist = sqrt(xDist+yDist);
+                int rad = (*it3)->getRadius() + (*it)->getRadius();
+                if(dist <= rad/2-2){
 
-                    for(vector<Bullet*>::iterator it2 = bullets.begin(); it2 != bullets.end(); it2++) {
-                        (*it)->bulletCollision(*it,*it2, enemies);
-                    }
+                    (*it)->changeTexture("assets/npc/h1.png");
+                    (*it)->setType("z");
+
                 }
 
+            for(vector<Bullet*>::iterator it2 = bullets.begin(); it2 != bullets.end(); it2++) {
+                (*it)->bulletCollision(*it,*it2, enemies);
+            }
 
     }
 
+}
+for(vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); it++) {
+    for(vector<Enemy*>::iterator it2 = enemies.begin(); it2 != enemies.end(); it2++) {
+        int xDist1 = ((*it2)->getXCentre() - (*it)->getXCentre()) * ((*it2)->getXCentre() - (*it)->getXCentre());
+        int yDist1 = ((*it2)->getYCentre() - (*it)->getYCentre()) * ((*it2)->getYCentre() - (*it)->getYCentre());
+        double dist1 = sqrt(xDist1+yDist1);
+        int rad22 = (*it)->getRadius() + (*it2)->getRadius();
+        if(dist1 <= rad22/2-2){
+            if ( (*it)->getType() == "z" ) {
+                (*it2)->changeTexture("assets/npc/iu.png");
+                (*it2)->setType("z");
+            }
 
 
-
-
-    for(vector<Human*>::iterator it4 = humans.begin(); it4 != humans.end(); it4++) {
-        (*it4)->render();
-        (*it4)->update();
-
+        }
+    }
 
 }
 }

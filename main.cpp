@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     int frameTime;
 
     game = new Game();
-    game->init("Title", 800, 640, false);
+    game->init("Title", 1280, 768, false);
     game->fillVector();
     for (int i = 0; i<1;i++){
             game->spawnEnemies();
