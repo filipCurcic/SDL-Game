@@ -151,10 +151,17 @@ void Game::spawnUnits()
                     (*it)->setType("z");
 
                 }
+                while((*it3)->checkCollision(*it3, *it))
+                {
+                    (*it)->setFr(false);
+                    break;
+                };
+                while(!(*it3)->checkCollision(*it3, *it))
+                {
+                    (*it)->setFr(true);
+                    break;
+                };
 
-            for(vector<Bullet*>::iterator it2 = bullets.begin(); it2 != bullets.end(); it2++) {
-                (*it)->bulletCollision(*it,*it2, enemies);
-            }
 
     }
 

@@ -11,7 +11,7 @@ public:
 
     void update();
     void render();
-    void move(int dx, int dy);
+    void move(float dx, float dy);
     int getXCentre() {return destinationRect.x+32;}
     int getYCentre() {return destinationRect.y+32;}
     int getRadius() {return 32;}

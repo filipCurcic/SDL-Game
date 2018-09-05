@@ -19,67 +19,76 @@ void Enemy::updateEnemy()
 
 void Enemy::move()
 {
-    switch(currentState){
-    case move_left:
+    if(fr)
+    {
+        switch(currentState){
+        case move_left:
         while(checkBorders()){
 
             GameObject::move(-2, 0);
             break;
-        }
+            }
 
-    case move_right:
-        while(checkBorders()){
+        case move_right:
+            while(checkBorders()){
 
-            GameObject::move(2, 0);
+                GameObject::move(2, 0);
+                break;
+            }
+        case move_up:
+            while(checkBorders()){
+
+                GameObject::move(0, -3);
+                break;
+            }
+
+        case move_down:
+            while(checkBorders()) {
+
+                GameObject::move(0, 1);
+                break;
+            }
+
+        case move_diag_left_up:
+            while(checkBorders()) {
+                GameObject::move(-1, -1);
+                break;
+            }
+
+        case move_diag_right_up:
+            while(checkBorders()) {
+               GameObject::move(1, 1);
+                break;
+            }
+
+        case move_diag_left_down:
+            while(checkBorders()) {
+                GameObject::move(-1, 1);
+                break;
+            }
+
+        case move_diag_right_down:
+            while(checkBorders()) {
+                GameObject::move(1, -1);
+                break;
+            }
+
+        case stop:
+            GameObject::move(0,0);
             break;
+
         }
-    case move_up:
-        while(checkBorders()){
-
-            GameObject::move(0, -3);
-            break;
+        moved++;
+        if(moved>35) {
+            changeState();
+            moved = 0;
         }
-
-    case move_down:
-        while(checkBorders()) {
-
-            GameObject::move(0, 1);
-            break;
-        }
-
-    case move_diag_left_up:
-        while(checkBorders()) {
-            GameObject::move(-1, -1);
-            break;
-        }
-
-    case move_diag_right_up:
-        while(checkBorders()) {
-           GameObject::move(1, 1);
-            break;
-        }
-
-    case move_diag_left_down:
-        while(checkBorders()) {
-            GameObject::move(-1, 1);
-            break;
-        }
-
-    case move_diag_right_down:
-        while(checkBorders()) {
-            GameObject::move(1, -1);
-            break;
-        }
-
-    case stop:
-        GameObject::move(0,0);
-        break;
 
     }
-    moved++;
-    if(moved>35) {
-        changeState();
-        moved = 0;
+
+    if(!fr)
+    {
+
     }
 
 

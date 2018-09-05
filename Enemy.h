@@ -19,6 +19,9 @@ public:
     void bulletCollision(Enemy *enemy, Bullet *bullet,vector<Enemy*> enemies);
     static Enemy *createEnemy(int x, int y) {return new Enemy(x,y);}
     bool checkBorders();
+    State getState() {return currentState;}
+    void setState(State state) {currentState = state;}
+    void setFr(bool f) {fr = f;}
 
 
 
@@ -26,6 +29,7 @@ private:
     int xp;
     int yp;
     int moved = 0;
+    bool fr = true;
     State currentState;
 };
 

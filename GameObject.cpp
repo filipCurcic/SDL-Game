@@ -23,7 +23,7 @@ void GameObject::render()
     SDL_RenderCopy(Game::renderer, objTexture, NULL, &destinationRect);
 }
 
-void GameObject::move(int dx, int dy)
+void GameObject::move(float dx, float dy)
 {
 
     if(destinationRect.x > 1200) {
