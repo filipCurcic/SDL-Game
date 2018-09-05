@@ -16,7 +16,7 @@ Player* player;
 GameObject* b;
 Enemy* e;
 Bullet* bullet;
-Human* human;
+//Human* human;
 int bulletDirection;
 
 
@@ -26,7 +26,7 @@ SDL_Event Game::event;
 vector<Enemy*> objects;
 vector<Bullet*> bullets;
 vector<Player*> players;
-vector<Human*> humans;
+//vector<Human*> humans;
 vector<Enemy*> enemies;
 
 
@@ -65,9 +65,9 @@ void Game::init(const char *title, int width, int height, bool fullscreen)
     players.push_back(player);
 
     map = new Map();
-    e = new Enemy(0, 0);
-    bullet = new Bullet(NULL, NULL);
-    human = new Human(200, 200);
+    //e = new Enemy(0, 0);
+    //bullet = new Bullet(NULL, NULL);
+    //human = new Human(200, 200);
 
 }
 
@@ -116,7 +116,7 @@ void Game::update()
 {
     player->update();
     player->control(player);
-    e->bulletCollision(e, bullet, objects);
+    //e->bulletCollision(e, bullet, objects);
 }
 
 void Game::render()
@@ -125,7 +125,7 @@ void Game::render()
     map->DrawMap();
     player->render();
     Game::spawnUnits();
-    Game::spawnBullets();
+    //Game::spawnBullets();    //Moguc memory-leak
     SDL_RenderPresent(renderer);
 
 
@@ -154,6 +154,8 @@ void Game::spawnUnits()
                 while((*it3)->checkCollision(*it3, *it))
                 {
                     (*it)->setFr(false);
+                    (*it3)->changeDirection(*it3, *it);
+
                     break;
                 };
                 while(!(*it3)->checkCollision(*it3, *it))
@@ -238,6 +240,26 @@ void Game::fillVector()
     enemies.push_back(e9);
     Enemy* e10 = new Enemy(randNum(), randNum());
     enemies.push_back(e10);
+    Enemy* e11 = new Enemy(randNum(), randNum());
+    enemies.push_back(e11);
+    Enemy* e12 = new Enemy(randNum(), randNum());
+    enemies.push_back(e12);
+    Enemy* e13 = new Enemy(randNum(), randNum());
+    enemies.push_back(e13);
+    Enemy* e14 = new Enemy(randNum(), randNum());
+    enemies.push_back(e14);
+    Enemy* e15 = new Enemy(randNum(), randNum());
+    enemies.push_back(e15);
+    Enemy* e16 = new Enemy(randNum(), randNum());
+    enemies.push_back(e16);
+    Enemy* e17 = new Enemy(randNum(), randNum());
+    enemies.push_back(e17);
+    Enemy* e18 = new Enemy(randNum(), randNum());
+    enemies.push_back(e18);
+    Enemy* e19 = new Enemy(randNum(), randNum());
+    enemies.push_back(e19);
+    Enemy* e20 = new Enemy(randNum(), randNum());
+    enemies.push_back(e20);
 }
 
 
